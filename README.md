@@ -38,7 +38,7 @@ npm install
 # Lancer le serveur de développement
 npm run dev
 
-Le site sera accessible à l'adresse [http://localhost:5173](http://localhost:5173) (ou le port configuré).
+Le site sera accessible à l'adresse http://localhost:5173.
 
 ## Structure du projet
 

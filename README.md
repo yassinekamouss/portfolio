@@ -18,7 +18,7 @@ This repository hosts my personal portfolio website, designed to showcase my ski
 
 ## Live Demo
 
-View the portfolio online : [lien vers le site déployé](#)
+View the portfolio online : [Link to deployed site](#)
 
 ## Local Installation
 
@@ -52,7 +52,7 @@ src/
 
 ## Deployment
 
-This site is deployed on [Deployment platform: Vercel].
+This site is deployed on [Vercel]().
 
 Deployment instructions :
 
@@ -67,4 +67,4 @@ npm run build
 
 ## Contact
 
-For any inquiries regarding this project, you can [contact me](yassinekamouss76@gmail.com)
+For any inquiries regarding this project, you can [contact me](mailto:yassinekamouss76@gmail.com)

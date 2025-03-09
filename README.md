@@ -43,11 +43,11 @@ The site will be accessible at [http://localhost:5173].
 
 ```
 src/
-├── components/     # Composants React réutilisables
-├── assets/         # Images, polices, et autres ressources statiques
-├── styles/         # Fichiers CSS ou SCSS
-├── utils/          # Fonctions utilitaires
-└── data/           # Données JSON pour les projets/compétences
+├── components/     # Reusable React components
+├── assets/         # Images, fonts, and other static resources
+├── styles/         # CSS or SCSS files
+├── utils/          # Utility functions
+└── data/           # JSON data for projects/skills
 ```
 
 ## Deployment

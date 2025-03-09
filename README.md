@@ -42,13 +42,14 @@ Le site sera accessible à l'adresse [http://localhost:5173](http://localhost:51
 
 ## Structure du projet
 
-```
 src/
 ├── components/     # Composants React réutilisables
 ├── assets/         # Images, polices, et autres ressources statiques
 ├── styles/         # Fichiers CSS ou SCSS
 ├── utils/          # Fonctions utilitaires
 └── data/           # Données JSON pour les projets/compétences
+
+```
 
 ## Déploiement
 

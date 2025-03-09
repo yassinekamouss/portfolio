@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@theme {
+  --color-primary: #17B8A6; /* accent */
+  --color-secondary: #1D2C33; /* dark */
+  --color-main: #2A3D45; /* main */
+}
+@layer{
+  .bg-main-gradient {
+    background: linear-gradient(to bottom, var(--color-main), var(--color-secondary));
+  }
+}
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+body {
+  margin: 0;
+  font-family: "Raleway", serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #2A3D45;
+  color: #F0F7F4;
+}
+::-webkit-scrollbar {
+  width: 8px; 
+}
+
+::-webkit-scrollbar-track {
+  background: #48867f; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #17B8A6; 
+  border-radius: 10px; 
+}
+
+/* --main-color: #2A3D45;
+--dark-color: #1D2C33;
+--white-color: #F0F7F4;
+--accent-color: #66A5AD;
+--gray-color: #D8E1E9;
+--transition: all 0.3s ease; */

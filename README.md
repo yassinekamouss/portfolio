@@ -1,70 +1,70 @@
 # Portfolio Personnel
 
 This repository hosts my personal portfolio website, designed to showcase my skills, projects, and professional journey. Built with [list technologies, e.g., HTML, CSS, JavaScript, React, etc.], this site serves as a window into my work and creativity.
-Ce dépôt contient le code source de mon portfolio professionnel développé avec React.
 
-## Technologies utilisées
+## Technologies Used
 
 - React.js
-- [Autres bibliothèques/frameworks : React Router, React Icons, React Typed, React Particle.]
-- [Outils de build : Vite, Webpack.]
-- [CSS : Tailwind, SASS.]
+- Additional Libraries/Frameworks : React Router, React Icons, React Typed, React Particle.
+- Build Tools : Vite, Webpack.
+- CSS : Tailwind, SASS.
 
-## Fonctionnalités
+## Features
 
-- Interface responsive
-- Présentation des projets et compétences
-- Formulaire de contact
-- Mon CV
+- Responsive interface
+- Projects and skills showcase
+- Contact form
+- Resume/CV section and more
 
-## Démonstration
+## Live Demo
 
-Voir le portfolio en ligne : [lien vers le site déployé]
+View the portfolio online : [lien vers le site déployé](#)
 
-## Installation locale
+## Local Installation
 
-Pour exécuter ce projet en local sur votre machine :
+To run this project locally on your machine :
 
 ```bash
-# Cloner le dépôt
+# Clone the repository
 git clone https://github.com/yassinekamouss/portfolio.git
 
-# Naviguer dans le dossier
+# Navigate to the project directory
 cd portfolio
 
-# Installer les dépendances
+# Install dependencies
 npm install
 
-# Lancer le serveur de développement
+# Start the development server
 npm run dev
+```
+The site will be accessible at [http://localhost:5173].
 
-Le site sera accessible à l'adresse http://localhost:5173.
+## Project Structure
 
-## Structure du projet
-
+```
 src/
 ├── components/     # Composants React réutilisables
 ├── assets/         # Images, polices, et autres ressources statiques
 ├── styles/         # Fichiers CSS ou SCSS
 ├── utils/          # Fonctions utilitaires
 └── data/           # Données JSON pour les projets/compétences
-
 ```
 
-## Déploiement
+## Deployment
 
-Ce site est déployé sur [plateforme de déploiement : Vercel].
+This site is deployed on [Deployment platform: Vercel].
 
-Instructions pour déployer :
+Deployment instructions :
+
 ```bash
 npm run build
-# commandes spécifiques à votre plateforme de déploiement
+# Commands specific to your deployment platform
 ```
 
-## Captures d'écran
+## Screenshots
 
 ![Aperçu du portfolio](lien_vers_capture_ecran_principale)
 
 ## Contact
 
-Pour toute question concernant ce projet, vous pouvez me contacter à [yassinekamouss76@gmail.com].
+For any inquiries regarding this project, you can [contact me](yassinekamouss76@gmail.com)

@@ -15,7 +15,7 @@ export default function Findme() {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         className="w-4/5 mx-auto p-4 mt-24 font-sans text-white">
             <div className="mt-12 px-4 py-6 md:px-16">
                 <div className="text-4xl font-bold text-center">

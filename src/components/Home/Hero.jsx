@@ -15,7 +15,7 @@ export default function Hero() {
                     <h1 className="text-4xl text-start font-bold font-sans text-center mt-16">
                     <ReactTyped
                         strings={[
-                            "I'm a <span class='text-primary'>Full-Stack Developer (MERN / MEAN)</span>.",
+                            "I'm a <span class='text-primary'>Full-Stack Developer.</span>",
                             "I build <span class='text-primary'>Scalable Web Applications</span>.",
                             "I specialize in <span class='text-primary'>DevOps / Cloud Computing</span>.",
                             "Passionate about <span class='text-primary'>Automation / (CI/CD)</span>.",

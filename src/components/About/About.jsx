@@ -1,18 +1,18 @@
 import ParticlesBackground from "../ParticlesBackground"
-import Findme from "./Findme"
-import Hero from "./Hero"
-import Introduction from "./Introduction"
+import WhoIam from "./WhoIam"
+import Skillset from "./Skillset"
+import ToolsIUse from "./ToolsIUse"
 
-export default function Home(){
+export default function About(){
     return (
         <div className="min-h-screen mt-24 flex flex-col">
             <div className="h-1/2">
-                <Hero />
+                <WhoIam />
             </div>
             <div className="h-1/2 bg-main-gradient">
-                <Introduction />
+                <Skillset />
                 <div className="bg-secondary">
-                    <Findme />
+                    <ToolsIUse />
                 </div>
             </div>
         </div>

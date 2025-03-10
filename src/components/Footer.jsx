@@ -1,8 +1,12 @@
 import { FaGithub,  FaLinkedinIn  } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import { FaXTwitter } from "react-icons/fa6";
+import { SocialsContext } from "../App";
+import { useContext } from "react";
 
 export default function Footer() {
+    
+    const socials = useContext(SocialsContext);
 
     return (
         <footer className="bg-secondary p-4 w-full font-sans">
@@ -14,18 +18,11 @@ export default function Footer() {
                 Copyright &copy; {new Date().getFullYear()}
                 </div>
                 <div className="flex space-x-4">
-                    <a href="https://github.com/yassinekamouss/yassinekamouss" target="_blank" className="text-white hover:text-primary hover:shadow-lg hover:shadow-primary transition-all duration-300">
-                        <FaGithub />
-                    </a>
-                    <a href="https://www.linkedin.com/in/yassine-kamouss-a69599331/" target="_blank" className="text-white hover:text-primary hover:shadow-lg hover:shadow-primary transition-all duration-300">
-                        <FaLinkedinIn />
-                    </a>
-                    <a href="https://leetcode.com/u/yassinekamouss/" target="_blank" className="text-white hover:text-primary hover:shadow-lg hover:shadow-primary transition-all duration-300">
-                        <SiLeetcode />
-                    </a>
-                    <a href="https://x.com/YKamouss17826" target="_blank" className="text-white hover:text-primary hover:shadow-lg hover:shadow-primary transition-all duration-300">
-                        <FaXTwitter />
-                    </a>
+                    {socials.map(social => (
+                        <a key={social.id} href={social.link} target="_blank" className="text-white hover:text-primary hover:shadow-lg hover:shadow-primary transition-all duration-300">
+                            {social.icon}
+                        </a>
+                    ))}
                 </div>
             </div>
         </footer>

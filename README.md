@@ -63,7 +63,7 @@ npm run build
 
 ## Screenshots
 
-![portfolio home page screenshot ](./src/assets/capture.png)
+![portfolio home page screenshot ](./src/assets/screenshot.png)
 
 ## Contact
 

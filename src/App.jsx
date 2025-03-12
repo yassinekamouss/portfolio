@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
+import Projects from "./components/Projects/Projects";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { FaGithub,  FaLinkedinIn  } from "react-icons/fa";
@@ -19,15 +20,15 @@ const socials = [
 
 function App() {
   return (
-    <div className="">
+    <div className="flex flex-col min-h-screen">
       <SocialsContext.Provider value={socials}>
         <Navbar />
-        <div className="">
+        <div className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            {/* <Route path="/projects" element={<Projects />} />
-            <Route path="/Resume" element={<Resume />} />
+            <Route path="/projects" element={<Projects />} />
+            {/* <Route path="/Resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} /> */}
           </Routes>
         </div>

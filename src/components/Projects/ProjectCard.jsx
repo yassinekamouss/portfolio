@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
+import Avatar from "../../assets/screenshot.png";
 
 export default function ProjectCard({ project, index }) {
   const isEven = index % 2 === 0;
@@ -27,7 +28,7 @@ export default function ProjectCard({ project, index }) {
           {/* Image */}
           <div className="w-full h-[16rem] mx-auto mb-4 overflow-hidden">
             <img
-              src={project.image}
+              src={Avatar}
               alt={project.title}
               className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
             />

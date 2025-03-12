@@ -5,19 +5,46 @@ import ProjectCard from "./ProjectCard";
 export default function Projects() {
 
     const projects = [
-        // {
-        //   title: "",
-        //   category: "",
-        //   desc: "",
-        //   image: "",
-        //   technologies: [],
-        //   sourceLink: "",
-        //   liveLink: "",
-        // },
+        {
+          title: "",
+          category: "",
+          desc: "",
+          image: "",
+          technologies: [],
+          sourceLink: "",
+          liveLink: "",
+        },
+        {
+          title: "",
+          category: "",
+          desc: "",
+          image: "",
+          technologies: [],
+          sourceLink: "",
+          liveLink: "",
+        },
+        {
+          title: "",
+          category: "",
+          desc: "",
+          image: "",
+          technologies: [],
+          sourceLink: "",
+          liveLink: "",
+        },
+        {
+          title: "",
+          category: "",
+          desc: "",
+          image: "",
+          technologies: [],
+          sourceLink: "",
+          liveLink: "",
+        },
     ];
     
     return (
-        <div className="min-h-screen bg-main-gradient text-white pt-24 pb-24 font-sans">
+        <div className="min-h-screen bg-main-gradient-light text-white pt-24 pb-24 font-sans">
             <div className="max-w-6xl mx-auto px-6 relative">
                 <ParticlesBackground /> 
                 <h2 className="text-5xl font-bold text-center mt-12">

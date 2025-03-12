@@ -2,6 +2,10 @@
 
 This repository hosts my personal portfolio website, designed to showcase my skills, projects, and professional journey. Built with [list technologies, e.g., HTML, CSS, JavaScript, React, etc.], this site serves as a window into my work and creativity.
 
+## Screenshots
+
+![portfolio home page screenshot ](./src/assets/screenshot.png)
+
 ## Technologies Used
 
 - React.js
@@ -18,7 +22,7 @@ This repository hosts my personal portfolio website, designed to showcase my ski
 
 ## Live Demo
 
-View the portfolio online : [Link to deployed site](#)
+View the portfolio online : [https://portfolio-yassine-kamouss-projects.vercel.app/](#)
 
 ## Local Installation
 
@@ -60,10 +64,6 @@ Deployment instructions :
 npm run build
 # Commands specific to your deployment platform
 ```
-
-## Screenshots
-
-![portfolio home page screenshot ](./src/assets/screenshot.png)
 
 ## Contact
 

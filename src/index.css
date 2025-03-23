@@ -21,6 +21,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #2A3D45;
   color: #F0F7F4;
+  user-select: none;
 }
 ::-webkit-scrollbar {
   width: 8px; 
@@ -34,10 +35,3 @@ body {
   background: #17B8A6; 
   border-radius: 10px; 
 }
-
-/* --main-color: #2A3D45;
---dark-color: #1D2C33;
---white-color: #F0F7F4;
---accent-color: #66A5AD;
---gray-color: #D8E1E9;
---transition: all 0.3s ease; */

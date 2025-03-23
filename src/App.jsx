@@ -1,39 +1,29 @@
-import { createContext } from "react";
-import { Route, Routes } from "react-router-dom";
+import React from "react";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import HeroSection from "./components/sections/HeroSection";
+import AboutSection from "./components/sections/AboutSection";
+import SkillsSection from "./components/sections/SkillsSection";
+import ProjectsSection from "./components/sections/ProjectSection";
+import ContactSection from "./components/sections/ContactSection";
+import { useScrollAnimation } from "./components/ui/Animation";
+import { FaCode, FaExternalLinkAlt, FaTools, FaGithub } from "react-icons/fa";
 import "./App.css";
-import Home from "./components/Home/Home";
-import About from "./components/About/About";
-import Projects from "./components/Projects/Projects";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import { FaGithub,  FaLinkedinIn  } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si";
-import { FaXTwitter } from "react-icons/fa6";
-
-export const SocialsContext = createContext([]);
-const socials = [
-  { id: 1, icon: <FaGithub />, link: "https://github.com/yassinekamouss/yassinekamouss/"},
-  { id: 2, icon: <FaLinkedinIn />, link: "https://www.linkedin.com/in/yassine-kamouss-a69599331/"},
-  { id: 3, icon: <SiLeetcode />, link: "https://leetcode.com/u/yassinekamouss/"},
-  { id: 4, icon: <FaXTwitter />, link: "https://x.com/YKamouss17826/"},
-];
 
 function App() {
+  // Activer les animations au défilement
+  useScrollAnimation();
   return (
-    <div className="flex flex-col min-h-screen">
-      <SocialsContext.Provider value={socials}>
-        <Navbar />
-        <div className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/projects" element={<Projects />} />
-            {/* <Route path="/Resume" element={<Resume />} />
-            <Route path="/contact" element={<Contact />} /> */}
-          </Routes>
-        </div>
-        <Footer />
-      </SocialsContext.Provider>
+    <div className="min-h-screen bg-main text-white">
+      <Navbar />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <ContactSection />
+      </main>
+      <Footer />
     </div>
   );
 }

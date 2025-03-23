@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   FaHtml5,
@@ -31,7 +31,7 @@ const SkillsSection = () => {
     { name: "JavaScript", icon: <FaJs className="text-yellow-500" /> },
     { name: "React", icon: <FaReact className="text-blue-400" /> },
     { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400" /> },
+    { name: "TailwindCSS", icon: <SiTailwindcss className="text-teal-400" /> },
     { name: "Redux", icon: <SiRedux className="text-purple-500" /> },
     { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
     { name: "Express", icon: <SiExpress className="text-gray-400" /> },
@@ -77,15 +77,15 @@ const SkillsSection = () => {
           <motion.div
             className="flex items-center space-x-10"
             animate={{ x: ["0%", "-100%"] }}
-            transition={{ ease: "linear", duration: 20, repeat: Infinity }}>
+            transition={{ ease: "linear", duration: 15, repeat: Infinity }}>
             {[...skills, ...skills].map((skill, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center text-white text-lg min-w-[100px]">
-                <div className="text-4xl bg-secondary p-5 rounded-full shadow-primary shadow-md">
+                className="flex flex-col items-center text-white text-lg min-w-[70px] md:min-w-[100px]">
+                <div className="text-4xl bg-secondary p-3 md:p-5 rounded-full shadow-primary shadow-md">
                   {skill.icon}
                 </div>
-                <span className="mt-2">{skill.name}</span>
+                <span className="mt-2 text-sm">{skill.name}</span>
               </div>
             ))}
           </motion.div>

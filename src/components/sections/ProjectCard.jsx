@@ -27,7 +27,7 @@ const ProjectCard = ({ projects }) => {
       {filteredProjects.length > 0 && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 relative">
           {/* Aperçu principal avec taille fixe */}
-          <div className="lg:col-span-2 h-[38rem] bg-gradient-to-b from-primary/10 via-secondary to-main backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-800 transform transition-all duration-500 shadow-2xl">
+          <div className="lg:col-span-2 max-h-[38rem] bg-gradient-to-b from-primary/10 via-secondary to-main backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-800 transform transition-all duration-500 shadow-2xl">
             {/* Hauteur fixe pour l'image */}
             <div className="relative h-72 md:h-96 overflow-hidden">
               {currentProject.image && (
@@ -91,7 +91,7 @@ const ProjectCard = ({ projects }) => {
 
           {/* Miniatures projets à droite avec hauteur fixe et défilement */}
           <div
-            className="relative h-[38rem] flex lg:flex-col gap-4 overflow-x-auto 
+            className="relative max-h-[38rem] flex lg:flex-col gap-4 overflow-x-auto 
                         lg:overflow-y-auto pb-4 lg:pb-2 pr-1 custom-scrollbar">
             {filteredProjects.map((project, index) => (
               <div

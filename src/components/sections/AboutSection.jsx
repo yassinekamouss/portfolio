@@ -45,7 +45,7 @@ const AboutSection = () => {
               Développeur Full Stack & Étudiant en Ingénierie Logicielle
             </h3>
 
-            <p className="mb-4 text-lg">
+            <p className="mb-4 text-lg text-justify">
               Actuellement en première année d'ingénierie logicielle et systèmes
               intelligents, je suis un développeur full stack passionné par la
               création d’applications web modernes et performantes. Mon parcours
@@ -54,7 +54,7 @@ const AboutSection = () => {
               efficaces et adaptées aux besoins des utilisateurs.
             </p>
 
-            <p className="mb-6 text-lg">
+            <p className="mb-6 text-lg text-justify">
               Ma philosophie repose sur trois principes clés : un code propre,
               une expérience utilisateur fluide et une architecture évolutive.
               Toujours en quête de nouveaux défis, j’aime explorer et apprendre

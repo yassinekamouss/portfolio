@@ -22,7 +22,7 @@ This repository hosts my personal portfolio website, designed to showcase my ski
 
 ## Live Demo
 
-View the portfolio online : [https://portfolio-yassine-kamouss-projects.vercel.app/](#)
+View the portfolio online : [https://yassinekamouss.vercel.app/](#)
 
 ## Local Installation
 

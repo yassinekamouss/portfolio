@@ -4,7 +4,7 @@ This repository hosts my personal portfolio website, designed to showcase my ski
 
 ## Screenshots
 
-![portfolio home page screenshot ](./src/assets/screenshot.png)
+![portfolio home page screenshot ](./src/assets/Screenshot.png)
 
 ## Technologies Used
 

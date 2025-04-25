@@ -77,7 +77,7 @@ const SkillsSection = () => {
           <motion.div
             className="flex items-center space-x-10"
             animate={{ x: ["0%", "-100%"] }}
-            transition={{ ease: "linear", duration: 15, repeat: Infinity }}>
+            transition={{ ease: "linear", duration: 20, repeat: Infinity }}>
             {[...skills, ...skills].map((skill, index) => (
               <div
                 key={index}

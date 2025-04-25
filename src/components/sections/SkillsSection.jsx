@@ -50,6 +50,21 @@ const SkillsSection = () => {
     { name: "Jquery", icon: <SiJquery className="text-blue-400" /> },
   ];
 
+  const [sliderWidth, setSliderWidth] = useState(0);
+
+  useEffect(() => {
+    const updateSliderWidth = () => {
+      const container = document.querySelector(".skills-slider");
+      if (container) {
+        setSliderWidth(container.scrollWidth / 2);
+      }
+    };
+
+    updateSliderWidth();
+    window.addEventListener("resize", updateSliderWidth);
+    return () => window.removeEventListener("resize", updateSliderWidth);
+  }, []);
+
   return (
     <section
       id="compétences"
@@ -69,23 +84,27 @@ const SkillsSection = () => {
 
         {/* Défilement infini avec fondu aux extrémités */}
         <div className="relative w-full overflow-hidden">
-          {/* Dégradé aux extrémités */}
           <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-main via-transparent to-transparent z-10"></div>
           <div className="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-main via-transparent to-transparent z-10"></div>
 
-          {/* Slider */}
           <motion.div
-            className="flex items-center space-x-10"
-            animate={{ x: ["0%", "-100%"] }}
-            transition={{ ease: "linear", duration: 20, repeat: Infinity }}>
+            className="flex items-center space-x-6 md:space-x-10 skills-slider"
+            animate={{
+              x: [-sliderWidth, 0],
+            }}
+            transition={{
+              ease: "linear",
+              duration: 25,
+              repeat: Infinity,
+            }}>
             {[...skills, ...skills].map((skill, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center text-white text-lg min-w-[70px] md:min-w-[100px]">
-                <div className="text-4xl bg-secondary p-3 md:p-5 rounded-full shadow-primary shadow-md">
+                className="flex flex-col items-center text-white text-lg min-w-[60px] md:min-w-[100px]">
+                <div className="text-3xl md:text-4xl bg-secondary p-2 md:p-5 rounded-full shadow-primary shadow-md">
                   {skill.icon}
                 </div>
-                <span className="mt-2 text-sm">{skill.name}</span>
+                <span className="mt-2 text-xs md:text-sm">{skill.name}</span>
               </div>
             ))}
           </motion.div>

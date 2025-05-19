@@ -3,6 +3,7 @@ import phpPlanFlow from "../../assets/phpPlanFlow.png";
 import preinscription from "../../assets/preinscription.png";
 import sortingvisualizer from "../../assets/sortingvisualizer.png";
 import Bag from "../../assets/Bag.png";
+import MatheMagiqueMobile from "../../assets/mathemagique_mobile.jpg";
 import ProjectCard from "./ProjectCard";
 
 const ProjectsSection = () => {
@@ -62,6 +63,17 @@ const ProjectsSection = () => {
       demoLink: "",
       codeLink: "https://github.com/yassinekamouss/BAG-app.git",
     },
+    {
+      id: 6,
+      title: "Application mobile permettre aux parents de suivre les progrès et activités de leurs enfants.",
+      category: "mobile",
+      image: MatheMagiqueMobile,
+      description:
+        "Application mobile développée avec React Native (CLI) et Firebase pour permettre aux parents de suivre les progrès et activités de leurs enfants.",
+      technologies: ["React Native", "React Navigation", "Firebase Authentication", "Firebse Realtime Database"],
+      demoLink: "",
+      codeLink: "https://github.com/yassinekamouss/EspaceParental.git",
+    }
   ];
 
   return (

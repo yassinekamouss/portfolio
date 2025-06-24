@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Typed from "typed.js";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import profileImage from "../../assets/YASSINEKMAOUSS.jpg";
 
 const HeroSection = () => {
   const roles = [
@@ -171,7 +172,7 @@ const HeroSection = () => {
                 {/* Image de profil */}
                 <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl shadow-primary/20">
                   <img
-                    src="/src/assets/YASSINEKMAOUSS.jpg"
+                    src={profileImage}
                     alt="Yassine Kamouss"
                     className="w-full h-full object-cover hero-profile-image"
                     onError={(e) => {

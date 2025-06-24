@@ -41,6 +41,7 @@ npm install
 # Start the development server
 npm run dev
 ```
+
 The site will be accessible at [http://localhost:5173].
 
 ## Project Structure

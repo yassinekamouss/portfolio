@@ -20,12 +20,16 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 font-sans py-4 ${
-        isScrolled ? "bg-secondary/90 backdrop-blur-md" : "bg-transparent"
+        isScrolled
+          ? "bg-secondary/90 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
       }`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <a href="#" className="text-2xl font-bold text-white">
+            <a
+              href="#"
+              className="text-2xl font-bold text-white hover:text-primary transition-colors duration-300">
               <span className="text-primary">Y.</span>Kamouss
             </a>
           </div>
@@ -37,7 +41,7 @@ const Navbar = () => {
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace("à", "a")}`}
-                  className="text-white hover:text-primary transition-colors duration-300">
+                  className="navbar-link text-white transition-all duration-300 relative">
                   {item}
                 </a>
               )
@@ -48,7 +52,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white focus:outline-none">
+              className="text-white hover:text-primary transition-colors duration-300 focus:outline-none">
               <svg
                 className="w-6 h-6"
                 fill="none"
@@ -77,14 +81,14 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 bg-main/95 backdrop-blur-md rounded-lg p-4 absolute left-4 right-4 shadow-lg">
+          <div className="md:hidden mt-4 bg-secondary/95 backdrop-blur-md rounded-lg p-4 absolute left-4 right-4 shadow-lg border border-gray-700">
             <div className="flex flex-col space-y-4">
               {["Accueil", "À propos", "Compétences", "Projets", "Contact"].map(
                 (item) => (
                   <a
                     key={item}
                     href={`#${item.toLowerCase().replace("à", "a")}`}
-                    className="text-white hover:text-primary transition-colors duration-300 py-2 px-4 rounded-md hover:bg-secondary/50"
+                    className="navbar-link text-white transition-all duration-300 py-2 px-4 rounded-md hover:bg-primary/20 hover:text-primary"
                     onClick={() => setIsMenuOpen(false)}>
                     {item}
                   </a>

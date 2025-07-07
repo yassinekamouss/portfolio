@@ -6,7 +6,7 @@ import preinscription from "../../assets/preinscription.png";
 import sortingvisualizer from "../../assets/sortingvisualizer.png";
 import Bag from "../../assets/Bag.png";
 import MatheMagiqueMobile from "../../assets/mathemagique_mobile.jpg";
-import WebMind from "../../assets/WebMind.png";
+import WebMind from "../../assets/webmind.png";
 import DocInsight from "../../assets/InsightDoc.png";
 import GameDashboard from "../../assets/admin_dashboard.png";
 import {

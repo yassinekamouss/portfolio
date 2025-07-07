@@ -6,6 +6,8 @@ import preinscription from "../../assets/preinscription.png";
 import sortingvisualizer from "../../assets/sortingvisualizer.png";
 import Bag from "../../assets/Bag.png";
 import MatheMagiqueMobile from "../../assets/mathemagique_mobile.jpg";
+import WebMind from "../../assets/WebMind.png";
+import DocInsight from "../../assets/InsightDoc.png";
 import GameDashboard from "../../assets/admin_dashboard.png";
 import {
   FaGithub,
@@ -23,6 +25,11 @@ import {
   FaEye,
   FaEyeSlash,
   FaAngular,
+  FaChevronLeft,
+  FaChevronRight,
+  FaTh,
+  FaThList,
+  FaSearch,
 } from "react-icons/fa";
 import {
   SiTailwindcss,
@@ -35,17 +42,24 @@ import {
   SiStripe,
   SiVite,
   SiTypescript,
+  SiPython,
+  SiStreamlit,
+  SiFastapi,
 } from "react-icons/si";
 
 const ProjectsSection = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [hoveredProject, setHoveredProject] = useState(null);
   const [expandedProject, setExpandedProject] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [viewMode, setViewMode] = useState("grid"); // "grid" ou "masonry"
+  const projectsPerPage = 6;
 
   // Mapping des technologies vers leurs icônes
   const techIcons = {
     React: SiReact,
-    "React Native": FaMobile,
+    "React ": SiReact, // Pour "React " avec espace
+    "React Native": SiReact,
     Tailwind: SiTailwindcss,
     "Tailwind CSS": SiTailwindcss,
     MySQL: SiMysql,
@@ -59,11 +73,18 @@ const ProjectsSection = () => {
     Vite: SiVite,
     Angular: FaAngular,
     Css: FaCss3,
-    Typescript: SiTypescript,
-    "Alpine.js": FaCode,
-    "React Navigation": FaMobile,
+    TypeScript: SiTypescript,
+    Typescript: SiTypescript, // Variante de casse
+    "Alpine.js": SiJavascript, // Alpine.js utilise JavaScript
+    "React Navigation": FaMobile, // Icône mobile pour la navigation
     "Firebase Authentication": SiFirebase,
-    "Firebse Realtime Database": SiMysql,
+    "Firebse Realtime Database": SiFirebase, // Correction de la faute de frappe
+    Python: SiPython,
+    Streamlit: SiStreamlit,
+    Ollama: FaCode, // Pas d'icône spécifique disponible
+    "DuckDuckGo Search": FaSearch, // Icône de recherche générique
+    FastAPI: SiFastapi,
+    LangChain: FaCode, // Pas d'icône spécifique disponible
   };
 
   const projects = [
@@ -192,6 +213,47 @@ const ProjectsSection = () => {
         "Synchronisation cloud",
       ],
     },
+    {
+      id: 8,
+      title: "Chatbot Intelligent avec Accès Web",
+      category: "frontend",
+      image: WebMind,
+      description:
+        "application de chatbot de nouvelle génération qui révolutionne l'interaction avec l'intelligence artificielle en combinant: Intelligence Locale,Accès Web Temps Réel, Confidentialité Totale, Streaming Avancé ",
+      technologies: ["Streamlit", "Ollama", "DuckDuckGo Search", "Python"],
+      demoLink: "",
+      codeLink: "https://github.com/yassinekamouss/WebMind.git",
+      features: [
+        "Interface Chat Moderne",
+        "Streaming en Temps Réel",
+        "Multi-Modèles",
+        "Recherche web + génération IA",
+      ],
+    },
+    {
+      id: 9,
+      title: "RAG Application: Document Q&A with Google Gemini AI",
+      category: "frontend",
+      image: DocInsight,
+      description:
+        "(RAG) application empowers users to interact with their PDF documents by leveraging Google's Gemini AI.",
+      technologies: [
+        "React ",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "FastAPI",
+        "LangChain",
+      ],
+      demoLink: "",
+      codeLink: "https://github.com/yassinekamouss/WebMind.git",
+      features: [
+        "PDF Document Upload",
+        "Conversational Memory",
+        "Multi-Language Voice Input",
+        "Real-Time Transcription",
+      ],
+    },
   ];
 
   const filters = [
@@ -204,6 +266,19 @@ const ProjectsSection = () => {
   const filteredProjects = projects.filter(
     (project) => activeFilter === "all" || project.category === activeFilter
   );
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+  const startIndex = (currentPage - 1) * projectsPerPage;
+  const paginatedProjects = filteredProjects.slice(
+    startIndex,
+    startIndex + projectsPerPage
+  );
+
+  // Reset page when filter changes
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [activeFilter]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -256,52 +331,113 @@ const ProjectsSection = () => {
           </p>
         </motion.div>
 
-        {/* Filtres */}
+        {/* Contrôles et Filtres */}
         <motion.div
-          className="flex flex-wrap justify-center gap-3 mb-8 sm:mb-12"
+          className="mb-8 sm:mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}>
-          {filters.map((filter) => {
-            const IconComponent = filter.icon;
-            return (
-              <button
-                key={filter.id}
-                onClick={() => setActiveFilter(filter.id)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 filter-button ${
-                  activeFilter === filter.id
-                    ? "bg-primary text-white shadow-lg shadow-primary/20"
-                    : "bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white"
-                }`}>
-                <IconComponent className="w-4 h-4" />
-                <span className="hidden sm:inline">{filter.label}</span>
-                <span className="sm:hidden">{filter.label.split(" ")[0]}</span>
-              </button>
-            );
-          })}
+          {/* Filtres */}
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
+            {filters.map((filter) => {
+              const IconComponent = filter.icon;
+              return (
+                <button
+                  key={filter.id}
+                  onClick={() => setActiveFilter(filter.id)}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 filter-button ${
+                    activeFilter === filter.id
+                      ? "bg-primary text-white shadow-lg shadow-primary/20"
+                      : "bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white"
+                  }`}>
+                  <IconComponent className="w-4 h-4" />
+                  <span className="hidden sm:inline">{filter.label}</span>
+                  <span className="sm:hidden">
+                    {filter.label.split(" ")[0]}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Contrôles de vue et statistiques */}
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-4">
+              <span className="text-gray-300 text-sm">
+                {filteredProjects.length} projet
+                {filteredProjects.length > 1 ? "s" : ""} trouvé
+                {filteredProjects.length > 1 ? "s" : ""}
+              </span>
+              {filteredProjects.length > projectsPerPage && (
+                <span className="text-gray-400 text-sm">
+                  Page {currentPage} sur {totalPages}
+                </span>
+              )}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span className="text-gray-400 text-sm hidden sm:block">
+                Vue:
+              </span>
+              <div className="flex bg-white/10 rounded-lg p-1">
+                <button
+                  onClick={() => setViewMode("grid")}
+                  className={`p-2 rounded transition-all duration-300 ${
+                    viewMode === "grid"
+                      ? "bg-primary text-white"
+                      : "text-gray-400 hover:text-white"
+                  }`}
+                  title="Vue grille">
+                  <FaTh className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setViewMode("masonry")}
+                  className={`p-2 rounded transition-all duration-300 ${
+                    viewMode === "masonry"
+                      ? "bg-primary text-white"
+                      : "text-gray-400 hover:text-white"
+                  }`}
+                  title="Vue masonry">
+                  <FaThList className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         {/* Grille de projets */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={activeFilter}
-            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 project-grid-compact"
+            key={`${activeFilter}-${currentPage}-${viewMode}`}
+            className={`${
+              viewMode === "grid"
+                ? "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+                : "columns-1 md:columns-2 xl:columns-3 gap-6 space-y-6"
+            } project-grid-compact`}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             exit="hidden">
-            {filteredProjects.map((project) => {
+            {paginatedProjects.map((project, index) => {
               const isExpanded = expandedProject === project.id;
               return (
                 <motion.div
                   key={project.id}
                   variants={itemVariants}
-                  className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700/50 hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/20 project-card project-card-compact"
+                  className={`group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700/50 hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/20 project-card project-card-compact ${
+                    viewMode === "masonry" ? "break-inside-avoid mb-6" : ""
+                  }`}
+                  style={{
+                    animationDelay: `${index * 0.1}s`,
+                  }}
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}>
-                  {/* Image du projet avec aspect ratio fixe */}
-                  <div className="relative aspect-video overflow-hidden">
+                  {/* Image du projet avec aspect ratio adaptatif */}
+                  <div
+                    className={`relative overflow-hidden ${
+                      viewMode === "grid" ? "aspect-video" : "aspect-[4/3]"
+                    }`}>
                     <img
                       src={project.image}
                       alt={project.title}
@@ -313,7 +449,7 @@ const ProjectsSection = () => {
                     {/* Badge de catégorie */}
                     <div className="absolute top-3 right-3">
                       <span
-                        className={`text-xs px-2 py-1 rounded-full font-medium backdrop-blur-sm ${
+                        className={`text-xs px-3 py-1.5 rounded-full font-medium backdrop-blur-sm ${
                           project.category === "fullstack"
                             ? "bg-blue-500/20 text-blue-400 border border-blue-500/30"
                             : project.category === "frontend"
@@ -328,6 +464,11 @@ const ProjectsSection = () => {
                       </span>
                     </div>
 
+                    {/* Indicateur de projet en hover */}
+                    <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
+                    </div>
+
                     {/* Overlay avec informations au hover */}
                     <div
                       className={`absolute inset-0 bg-black/80 flex items-center justify-center transition-opacity duration-300 ${
@@ -336,29 +477,29 @@ const ProjectsSection = () => {
                           : "opacity-0"
                       }`}>
                       <div className="text-center p-4">
-                        <h3 className="text-white font-bold text-base mb-2">
+                        <h3 className="text-white font-bold text-lg mb-3">
                           {project.title}
                         </h3>
-                        <p className="text-gray-300 text-xs mb-3 line-clamp-2">
+                        <p className="text-gray-300 text-sm mb-4 line-clamp-3">
                           {project.description}
                         </p>
-                        <div className="flex flex-wrap gap-1 justify-center">
+                        <div className="flex flex-wrap gap-2 justify-center">
                           {project.technologies
-                            .slice(0, 3)
-                            .map((tech, index) => {
+                            .slice(0, 4)
+                            .map((tech, techIndex) => {
                               const TechIcon = techIcons[tech] || FaCode;
                               return (
                                 <span
-                                  key={index}
+                                  key={techIndex}
                                   className="bg-primary/20 text-primary text-xs px-2 py-1 rounded-full flex items-center gap-1">
-                                  <TechIcon className="w-2 h-2" />
+                                  <TechIcon className="w-3 h-3" />
                                   {tech}
                                 </span>
                               );
                             })}
-                          {project.technologies.length > 3 && (
+                          {project.technologies.length > 4 && (
                             <span className="text-gray-400 text-xs">
-                              +{project.technologies.length - 3}
+                              +{project.technologies.length - 4}
                             </span>
                           )}
                         </div>
@@ -367,34 +508,36 @@ const ProjectsSection = () => {
                   </div>
 
                   {/* Contenu de la carte */}
-                  <div className="p-4 sm:p-5">
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300 line-clamp-2">
+                  <div className="p-5">
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-2">
                       {project.title}
                     </h3>
 
                     <p
-                      className={`text-gray-300 text-xs sm:text-sm mb-3 transition-all duration-300 ${
-                        isExpanded ? "line-clamp-none" : "line-clamp-2"
+                      className={`text-gray-300 text-sm mb-4 transition-all duration-300 ${
+                        isExpanded ? "line-clamp-none" : "line-clamp-3"
                       }`}>
                       {project.description}
                     </p>
 
                     {/* Bouton pour étendre/réduire la description */}
-                    <button
-                      onClick={() => toggleExpanded(project.id)}
-                      className="flex items-center gap-1 text-primary text-xs sm:text-sm font-medium mb-3 hover:text-primary/80 transition-colors duration-300">
-                      {isExpanded ? (
-                        <>
-                          <FaEyeSlash className="w-3 h-3" />
-                          Voir moins
-                        </>
-                      ) : (
-                        <>
-                          <FaEye className="w-3 h-3" />
-                          Voir plus
-                        </>
-                      )}
-                    </button>
+                    {project.description.length > 150 && (
+                      <button
+                        onClick={() => toggleExpanded(project.id)}
+                        className="flex items-center gap-2 text-primary text-sm font-medium mb-4 hover:text-primary/80 transition-colors duration-300">
+                        {isExpanded ? (
+                          <>
+                            <FaEyeSlash className="w-3 h-3" />
+                            Voir moins
+                          </>
+                        ) : (
+                          <>
+                            <FaEye className="w-3 h-3" />
+                            Voir plus
+                          </>
+                        )}
+                      </button>
+                    )}
 
                     {/* Fonctionnalités (visible seulement si étendu) */}
                     {isExpanded && (
@@ -402,16 +545,16 @@ const ProjectsSection = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="mb-3">
-                        <h4 className="text-xs sm:text-sm font-semibold text-white mb-2">
+                        className="mb-4">
+                        <h4 className="text-sm font-semibold text-white mb-3">
                           Fonctionnalités principales :
                         </h4>
-                        <ul className="space-y-1">
-                          {project.features?.map((feature, index) => (
+                        <ul className="space-y-2">
+                          {project.features?.map((feature, featureIndex) => (
                             <li
-                              key={index}
-                              className="text-gray-300 text-xs flex items-center gap-2">
-                              <div className="w-1 h-1 bg-primary rounded-full"></div>
+                              key={featureIndex}
+                              className="text-gray-300 text-sm flex items-start gap-2">
+                              <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                               {feature}
                             </li>
                           ))}
@@ -420,44 +563,39 @@ const ProjectsSection = () => {
                     )}
 
                     {/* Technologies avec icônes */}
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {project.technologies.map((tech, index) => {
+                    <div className="flex flex-wrap gap-2 mb-5">
+                      {project.technologies.map((tech, techIndex) => {
                         const TechIcon = techIcons[tech] || FaCode;
                         return (
                           <span
-                            key={index}
-                            className="bg-primary/10 text-primary text-xs px-2 py-1.5 rounded-md border border-primary/20 flex items-center gap-1.5 hover:bg-primary/20 transition-colors duration-300 tech-badge">
-                            <TechIcon className="w-2.5 h-2.5" />
-                            <span className="hidden sm:inline">{tech}</span>
-                            <span className="sm:hidden">
-                              {tech.split(" ")[0]}
-                            </span>
+                            key={techIndex}
+                            className="bg-primary/10 text-primary text-xs px-3 py-2 rounded-lg border border-primary/20 flex items-center gap-2 hover:bg-primary/20 transition-colors duration-300 tech-badge">
+                            <TechIcon className="w-3 h-3" />
+                            <span>{tech}</span>
                           </span>
                         );
                       })}
                     </div>
 
                     {/* Boutons d'action */}
-                    <div className="flex gap-2">
+                    <div className="flex gap-3">
                       {project.demoLink && (
                         <a
                           href={project.demoLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-1.5 bg-primary hover:bg-primary/90 text-white text-xs sm:text-sm font-medium py-2 px-3 rounded-md transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/20">
-                          <FaExternalLinkAlt className="w-2.5 h-2.5" />
-                          <span className="hidden sm:inline">Démo</span>
-                          <span className="sm:hidden">Live</span>
+                          className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white text-sm font-medium py-3 px-4 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/20">
+                          <FaExternalLinkAlt className="w-3 h-3" />
+                          Démo Live
                         </a>
                       )}
                       <a
                         href={project.codeLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-1.5 bg-gray-700 hover:bg-gray-600 text-white text-xs sm:text-sm font-medium py-2 px-3 rounded-md transition-all duration-300 hover:scale-105">
-                        <FaGithub className="w-2.5 h-2.5" />
-                        <span className="hidden sm:inline">Code</span>
-                        <span className="sm:hidden">Repo</span>
+                        className="flex-1 flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white text-sm font-medium py-3 px-4 rounded-lg transition-all duration-300 hover:scale-105">
+                        <FaGithub className="w-3 h-3" />
+                        Code Source
                       </a>
                     </div>
                   </div>
@@ -467,16 +605,105 @@ const ProjectsSection = () => {
           </motion.div>
         </AnimatePresence>
 
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <motion.div
+            className="flex justify-center items-center gap-2 mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}>
+            {/* Bouton précédent */}
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                currentPage === 1
+                  ? "bg-gray-800 text-gray-500 cursor-not-allowed"
+                  : "bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white"
+              }`}>
+              <FaChevronLeft className="w-3 h-3" />
+              <span className="hidden sm:inline">Précédent</span>
+            </button>
+
+            {/* Numéros de pages */}
+            <div className="flex gap-1">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                (pageNum) => {
+                  // Affichage intelligent des pages
+                  const showPage =
+                    pageNum === 1 ||
+                    pageNum === totalPages ||
+                    (pageNum >= currentPage - 1 && pageNum <= currentPage + 1);
+
+                  const showEllipsis =
+                    (pageNum === currentPage - 2 && currentPage > 3) ||
+                    (pageNum === currentPage + 2 &&
+                      currentPage < totalPages - 2);
+
+                  if (showEllipsis) {
+                    return (
+                      <span
+                        key={`ellipsis-${pageNum}`}
+                        className="px-3 py-2 text-gray-500">
+                        ...
+                      </span>
+                    );
+                  }
+
+                  if (!showPage) return null;
+
+                  return (
+                    <button
+                      key={pageNum}
+                      onClick={() => setCurrentPage(pageNum)}
+                      className={`w-10 h-10 rounded-lg font-medium transition-all duration-300 ${
+                        currentPage === pageNum
+                          ? "bg-primary text-white shadow-lg shadow-primary/20"
+                          : "bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white"
+                      }`}>
+                      {pageNum}
+                    </button>
+                  );
+                }
+              )}
+            </div>
+
+            {/* Bouton suivant */}
+            <button
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+              }
+              disabled={currentPage === totalPages}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                currentPage === totalPages
+                  ? "bg-gray-800 text-gray-500 cursor-not-allowed"
+                  : "bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white"
+              }`}>
+              <span className="hidden sm:inline">Suivant</span>
+              <FaChevronRight className="w-3 h-3" />
+            </button>
+          </motion.div>
+        )}
+
         {/* Message si aucun projet trouvé */}
         {filteredProjects.length === 0 && (
           <motion.div
-            className="text-center py-12"
+            className="text-center py-16"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}>
-            <p className="text-gray-400 text-lg">
-              Aucun projet trouvé pour cette catégorie.
-            </p>
+            <div className="bg-white/5 rounded-2xl p-8 max-w-md mx-auto">
+              <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <FaFilter className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                Aucun projet trouvé
+              </h3>
+              <p className="text-gray-400">
+                Aucun projet ne correspond au filtre sélectionné. Essayez de
+                changer de catégorie.
+              </p>
+            </div>
           </motion.div>
         )}
       </div>

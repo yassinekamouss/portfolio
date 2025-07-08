@@ -175,23 +175,6 @@ const ProjectsSection = () => {
       ],
     },
     {
-      id: 10,
-      title: "Visualisation interactive des algorithmes de tri",
-      category: "frontend",
-      image: sortingvisualizer,
-      description:
-        "Une application interactive permettant de visualiser et comparer différents algorithmes de tri en temps réel avec des animations fluides.",
-      technologies: ["React", "Vite", "Tailwind CSS"],
-      demoLink: "https://sorting-visualizer-37e32b.netlify.app/",
-      codeLink: "https://github.com/yassinekamouss/SortingVisualize.git",
-      features: [
-        "Visualisation en temps réel",
-        "Comparaison d'algorithmes",
-        "Contrôles interactifs",
-        "Animations fluides",
-      ],
-    },
-    {
       id: 7,
       title: "Application mobile de suivi parental",
       category: "mobile",
@@ -252,6 +235,23 @@ const ProjectsSection = () => {
         "Conversational Memory",
         "Multi-Language Voice Input",
         "Real-Time Transcription",
+      ],
+    },
+    {
+      id: 10,
+      title: "Visualisation interactive des algorithmes de tri",
+      category: "frontend",
+      image: sortingvisualizer,
+      description:
+        "Une application interactive permettant de visualiser et comparer différents algorithmes de tri en temps réel avec des animations fluides.",
+      technologies: ["React", "Vite", "Tailwind CSS"],
+      demoLink: "https://sorting-visualizer-37e32b.netlify.app/",
+      codeLink: "https://github.com/yassinekamouss/SortingVisualize.git",
+      features: [
+        "Visualisation en temps réel",
+        "Comparaison d'algorithmes",
+        "Contrôles interactifs",
+        "Animations fluides",
       ],
     },
   ];

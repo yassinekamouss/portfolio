@@ -175,7 +175,7 @@ const ProjectsSection = () => {
       ],
     },
     {
-      id: 6,
+      id: 10,
       title: "Visualisation interactive des algorithmes de tri",
       category: "frontend",
       image: sortingvisualizer,

@@ -175,28 +175,6 @@ const ProjectsSection = () => {
       ],
     },
     {
-      id: 7,
-      title: "Application mobile de suivi parental",
-      category: "mobile",
-      image: MatheMagiqueMobile,
-      description:
-        "Application mobile développée avec React Native (CLI) et Firebase pour permettre aux parents de suivre les progrès et activités de leurs enfants.",
-      technologies: [
-        "React Native",
-        "React Navigation",
-        "Firebase Authentication",
-        "Firebse Realtime Database",
-      ],
-      demoLink: "",
-      codeLink: "https://github.com/yassinekamouss/EspaceParental.git",
-      features: [
-        "Suivi des progrès",
-        "Notifications push",
-        "Interface intuitive",
-        "Synchronisation cloud",
-      ],
-    },
-    {
       id: 8,
       title: "Chatbot Intelligent avec Accès Web",
       category: "frontend",
@@ -235,6 +213,28 @@ const ProjectsSection = () => {
         "Conversational Memory",
         "Multi-Language Voice Input",
         "Real-Time Transcription",
+      ],
+    },
+    {
+      id: 7,
+      title: "Application mobile de suivi parental",
+      category: "mobile",
+      image: MatheMagiqueMobile,
+      description:
+        "Application mobile développée avec React Native (CLI) et Firebase pour permettre aux parents de suivre les progrès et activités de leurs enfants.",
+      technologies: [
+        "React Native",
+        "React Navigation",
+        "Firebase Authentication",
+        "Firebse Realtime Database",
+      ],
+      demoLink: "",
+      codeLink: "https://github.com/yassinekamouss/EspaceParental.git",
+      features: [
+        "Suivi des progrès",
+        "Notifications push",
+        "Interface intuitive",
+        "Synchronisation cloud",
       ],
     },
     {

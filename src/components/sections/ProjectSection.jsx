@@ -182,7 +182,7 @@ const ProjectsSection = () => {
       description:
         "application de chatbot de nouvelle génération qui révolutionne l'interaction avec l'intelligence artificielle en combinant: Intelligence Locale,Accès Web Temps Réel, Confidentialité Totale, Streaming Avancé ",
       technologies: ["Streamlit", "Ollama", "DuckDuckGo Search", "Python"],
-      demoLink: "",
+      demoLink: "https://webmind.streamlit.app/",
       codeLink: "https://github.com/yassinekamouss/WebMind.git",
       features: [
         "Interface Chat Moderne",
